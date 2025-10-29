@@ -21,11 +21,11 @@
     "db:sync:typeorm": "npx ts-node -r tsconfig-paths/register -P tsconfig.json ./node_modules/typeorm/cli.js schema:sync",
     "db:drop:typeorm": "yarn db:cli:typeorm schema:drop",
     "db:seeds:typeorm": "yarn db:cli:typeorm migration:run",
-    "db:prepare:typeorm": "yarn db:drop:typeorm -d ./database/postgres.datasource && yarn db:sync:typeorm -d ./database/postgres.datasource && yarn db:seeds:typeorm -d ./database/postgres.datasource",
+    "db:prepare:typeorm:postgres": "yarn db:drop:typeorm -d ./database/postgres.datasource && yarn db:sync:typeorm -d ./database/postgres.datasource && yarn db:seeds:typeorm -d ./database/postgres.datasource",
     "db:prepare:typeorm:mysql": "yarn db:drop:typeorm -d ./database/mysql.datasource && yarn db:sync:typeorm -d ./database/mysql.datasource && yarn db:seeds:typeorm -d ./database/mysql.datasource",
     "test:all": "yarn test:mysql && yarn test:postgres",
     "test:coverage": "yarn test:all --coverage",
-    "test:postgres": "yarn db:prepare:typeorm && cross-env TYPEORM_CONNECTION=postgres yarn test",
+    "test:postgres": "yarn db:prepare:typeorm:postgres && cross-env TYPEORM_CONNECTION=postgres yarn test",
     "test:mysql": "yarn db:prepare:typeorm:mysql && cross-env TYPEORM_CONNECTION=mysql yarn test"
   },
   "keywords": [
