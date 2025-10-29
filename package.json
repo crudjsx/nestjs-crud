@@ -25,8 +25,7 @@
     "test:all": "yarn test:mysql && yarn test:postgres",
     "test:coverage": "yarn test:all --coverage",
     "test:postgres": "yarn db:prepare:typeorm && yarn test",
-    "test:mysql": "yarn db:prepare:typeorm:mysql && TYPEORM_CONNECTION=mysql yarn test",
-    "test:mikro": "npx jest --runInBand -c=jest.config.js packages/crud-mikroorm --verbose"
+    "test:mysql": "yarn db:prepare:typeorm:mysql && cross-env TYPEORM_CONNECTION=mysql yarn test"
   },
   "keywords": [
     "nestjs",
@@ -58,6 +57,7 @@
     "mysql2": "3.11.5",
     "nps": "5.10.0",
     "nps-utils": "1.7.0",
+    "cross-env": "^10.1.0",
     "pg": "8.13.1",
     "prettier": "3.0.0",
     "reflect-metadata": "0.2.2",
