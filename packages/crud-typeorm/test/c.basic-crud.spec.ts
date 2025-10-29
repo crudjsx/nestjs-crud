@@ -532,7 +532,7 @@ describe('#crud-typeorm', () => {
     describe('#updateOneBase', () => {
       it('should return status 404', async () => {
         const dto = { name: 'updated0' };
-        const res = await request(server).patch('/companies/333').send(dto);
+        const res = await request(server).patch('/companies/3333').send(dto);
         expect(res.status).toBe(404);
       });
 
