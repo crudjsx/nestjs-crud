@@ -16,6 +16,7 @@
     "test": "npx jest --runInBand -c=jest.config.js packages/ --verbose",
     "lint": "eslint \"packages/**/*.ts\" --fix",
     "pub": "npx lerna publish --force-publish",
+    "start:typeorm": "npx nodemon -w ./integration/crud-typeorm -e ts node_modules/ts-node/dist/bin.js integration/crud-typeorm/main.ts",
     "db:cli:typeorm": "ts-node -r tsconfig-paths/register node_modules/typeorm/cli.js",
     "db:sync:typeorm": "npx ts-node -r tsconfig-paths/register -P tsconfig.json ./node_modules/typeorm/cli.js schema:sync",
     "db:drop:typeorm": "yarn db:cli:typeorm schema:drop",
