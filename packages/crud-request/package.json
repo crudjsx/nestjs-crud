@@ -1,5 +1,5 @@
 {
-  "name": "@n4it/crud-request",
+  "name": "@crudjsx/crud-request",
   "description": "NestJs CRUD for RESTful APIs - request query builder",
   "version": "1.0.11",
   "license": "GPL-3.0",
@@ -14,10 +14,10 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/nest4it/nestjs-crud"
+    "url": "https://github.com/crudjsx/nestjs-crud"
   },
   "bugs": {
-    "url": "https://github.com/nest4it/nestjs-crud/issues"
+    "url": "https://github.com/crudjsx/nestjs-crud/issues"
   },
   "keywords": [
     "typescript",
@@ -41,14 +41,14 @@
     "querybuilder"
   ],
   "author": {
-    "name": "n4it",
-    "email": "hello@n4it.nl"
+    "name": "rongyao",
+    "email": "zbrongyaozb@qq.com"
   },
   "scripts": {
     "build": "npx tsc -b"
   },
   "dependencies": {
-    "@n4it/crud-util": "^1.0.11",
+    "@crudjsx/crud-util": "^1.0.11",
     "qs": "^6.8.0"
   }
 }

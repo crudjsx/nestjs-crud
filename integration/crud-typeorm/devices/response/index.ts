@@ -1,4 +1,4 @@
-import { SerializeOptions } from '@n4it/crud';
+import { SerializeOptions } from '@crudjsx/crud';
 import { DeleteDeviceResponseDto } from './delete-device-response.dto';
 
 export const serialize: SerializeOptions = {

@@ -1,5 +1,5 @@
 {
-  "name": "@n4it/nestjs-crud",
+  "name": "@crudjsx/nestjs-crud",
   "version": "1.0.0",
   "description": "Nest CRUD for RESTful APIs",
   "license": "GPL-3.0",
@@ -32,7 +32,7 @@
     "nestjs",
     "nest",
     "crud",
-    "n4it"
+    "crudjsx"
   ],
   "devDependencies": {
     "@faker-js/faker": "9.3.0",
@@ -71,11 +71,11 @@
     "typescript": "5.7.2"
   },
   "author": {
-    "name": "n4it",
-    "email": "hello@n4it.nl"
+    "name": "rongyao",
+    "email": "zbrongyaozb@qq.com"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/nest4it/nestjs-crud"
+    "url": "https://github.com/crudjsx/nestjs-crud"
   }
 }

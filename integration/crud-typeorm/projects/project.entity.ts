@@ -7,7 +7,7 @@ import {
   IsDefined,
   IsBoolean,
 } from 'class-validator';
-import { CrudValidationGroups } from '@n4it/crud';
+import { CrudValidationGroups } from '@crudjsx/crud';
 
 import { BaseEntity } from '../base-entity';
 import { Company } from '../companies/company.entity';

@@ -1,4 +1,4 @@
-import { QueryFields, QuerySort } from '@n4it/crud-request/lib/types/request-query.types';
+import { QueryFields, QuerySort } from '@crudjsx/crud-request/lib/types/request-query.types';
 
 import { QueryFilterOption } from '../types';
 

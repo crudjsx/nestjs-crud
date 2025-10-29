@@ -1,6 +1,6 @@
 import { HttpStatus } from '@nestjs/common';
-import { RequestQueryBuilder } from '@n4it/crud-request';
-import { isString, objKeys } from '@n4it/crud-util';
+import { RequestQueryBuilder } from '@crudjsx/crud-request';
+import { isString, objKeys } from '@crudjsx/crud-util';
 import type { MergedCrudOptions, ParamsOptions } from '../interfaces';
 import { safeRequire } from '../util';
 import { R } from './reflection.helper';

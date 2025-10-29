@@ -5,7 +5,7 @@ import {
   isObject,
   isString,
   isUndefined,
-} from '@n4it/crud-util';
+} from '@crudjsx/crud-util';
 import { IStringifyOptions, stringify } from 'qs';
 
 import {

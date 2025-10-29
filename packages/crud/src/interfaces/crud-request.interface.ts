@@ -1,4 +1,4 @@
-import { ParsedRequestParams } from '@n4it/crud-request';
+import { ParsedRequestParams } from '@crudjsx/crud-request';
 
 import { CrudRequestOptions } from '../interfaces';
 

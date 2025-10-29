@@ -1,5 +1,5 @@
 {
-  "name": "@n4it/crud",
+  "name": "@crudjsx/crud",
   "description": "NestJs CRUD for RESTful APIs",
   "version": "1.0.11",
   "license": "GPL-3.0",
@@ -14,10 +14,10 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/nest4it/nestjs-crud"
+    "url": "https://github.com/crudjsx/nestjs-crud"
   },
   "bugs": {
-    "url": "https://github.com/nest4it/nestjs-crud/issues"
+    "url": "https://github.com/crudjsx/nestjs-crud/issues"
   },
   "keywords": [
     "typescript",
@@ -33,15 +33,15 @@
     "frameworks"
   ],
   "author": {
-    "name": "n4it",
-    "email": "hello@n4it.nl"
+    "name": "rongyao",
+    "email": "zbrongyaozb@qq.com"
   },
   "scripts": {
     "build": "npx tsc -b"
   },
   "dependencies": {
-    "@n4it/crud-request": "^1.0.11",
-    "@n4it/crud-util": "^1.0.11",
+    "@crudjsx/crud-request": "^1.0.11",
+    "@crudjsx/crud-util": "^1.0.11",
     "deepmerge": "^3.2.0"
   },
   "peerDependencies": {
