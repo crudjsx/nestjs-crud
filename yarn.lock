@@ -688,19 +688,6 @@
     mikro-orm "6.4.15"
     reflect-metadata "0.2.2"
 
-"@mikro-orm/core@^6.4.3":
-  version "6.4.3"
-  resolved "https://registry.npmjs.org/@mikro-orm/core/-/core-6.4.3.tgz"
-  integrity sha512-UTaqKs1bomYtGmEEZ8sNBOmW2OqT5NcMh+pBV2iJ6WLM5MuiIEuNhDMuvvPE5gNEwUzc1HyRhUV87bRDhDIGRg==
-  dependencies:
-    dataloader "2.2.3"
-    dotenv "16.4.7"
-    esprima "4.0.1"
-    fs-extra "11.2.0"
-    globby "11.1.0"
-    mikro-orm "6.4.3"
-    reflect-metadata "0.2.2"
-
 "@mikro-orm/knex@6.4.15":
   version "6.4.15"
   resolved "https://registry.yarnpkg.com/@mikro-orm/knex/-/knex-6.4.15.tgz#3dc6ba145cd1caa7e6f1608d9a936932e6b9fa24"
@@ -718,11 +705,6 @@
     fs-extra "11.2.0"
     knex "3.1.0"
     sqlstring "2.3.3"
-
-"@mikro-orm/nestjs@^6.0.2":
-  version "6.0.2"
-  resolved "https://registry.npmjs.org/@mikro-orm/nestjs/-/nestjs-6.0.2.tgz"
-  integrity sha512-3bUBnJ0HwwIjsNPb0n7dfTWayqA5iSLHv/zM9juyBADSpJB2oBAd96QlUqDvNi/RckSg0m+ifLVT0Uw8e0+POg==
 
 "@mikro-orm/postgresql@^6.4.3":
   version "6.4.3"
@@ -2712,11 +2694,6 @@ dotenv-expand@~10.0.0:
   version "10.0.0"
   resolved "https://registry.npmjs.org/dotenv-expand/-/dotenv-expand-10.0.0.tgz"
   integrity sha512-GopVGCpVS1UKH75VKHGuQFqS1Gusej0z4FyQkPdwjil2gNIv+LNsqBlboOzpJFZKVT95GkCyWJbBSdFEFUWI2A==
-
-dotenv@16.4.7:
-  version "16.4.7"
-  resolved "https://registry.npmjs.org/dotenv/-/dotenv-16.4.7.tgz"
-  integrity sha512-47qPchRCykZC03FhkYAhrvwU4xDBFIj1QPqaarj6mdM/hgUzfPHcpkHJOn3mJAufFeeAxAzeGsr5X0M4k6fLZQ==
 
 dotenv@16.5.0:
   version "16.5.0"
@@ -5186,11 +5163,6 @@ mikro-orm@6.4.15:
   version "6.4.15"
   resolved "https://registry.yarnpkg.com/mikro-orm/-/mikro-orm-6.4.15.tgz#2e60aa4cab4bdd0877ccd3836f699fa35f94a355"
   integrity sha512-ghtt7SnXLkoTcmvSzUn2ORsxKqo9pi9NYPmvu3qKIP41a1l0lQzwu0VG+PkywXSHC669DPDbikWqoo2FOdk90w==
-
-mikro-orm@6.4.3:
-  version "6.4.3"
-  resolved "https://registry.npmjs.org/mikro-orm/-/mikro-orm-6.4.3.tgz"
-  integrity sha512-xDNzmLiL4EUTMOu9CbZ2d0sNIaUdH4RzDv4oqw27+u0/FPfvZTIagd+luxx1lWWqe/vg/iNtvqr5OcNQIYYrtQ==
 
 mime-db@1.52.0:
   version "1.52.0"
