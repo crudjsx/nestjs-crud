@@ -2,7 +2,7 @@ import { CanActivate, Controller, ExecutionContext, Injectable } from '@nestjs/c
 import { APP_FILTER, APP_GUARD } from '@nestjs/core';
 import { Test } from '@nestjs/testing';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { isPg, postgresConfig, mySqlConfig } from '../../../database';
+import { dbConfig } from '../../../database';
 import { User } from '../../../integration/crud-typeorm/users';
 import { HttpExceptionFilter } from '../../../integration/shared/https-exception.filter';
 import { Crud } from '@crudjsx/crud';
@@ -10,7 +10,7 @@ import { UsersService } from '../../../integration/crud-typeorm/users/users.serv
 import { CrudGuard } from '../src';
 
 export const createNestMockServer = async (policies: string[]) => {
-  const withCache = isPg ? postgresConfig : mySqlConfig;
+  const withCache = dbConfig;
 
   @Injectable()
   class AuthGuardMock implements CanActivate {

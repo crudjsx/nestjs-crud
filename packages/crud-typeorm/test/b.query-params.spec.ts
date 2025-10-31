@@ -8,7 +8,7 @@ import * as request from 'supertest';
 
 import { Company } from '../../../integration/crud-typeorm/companies';
 import { Note } from '../../../integration/crud-typeorm/notes';
-import { isPg, postgresConfig, mySqlConfig } from '../../../database';
+import { dbConfig } from '../../../database';
 import { Project } from '../../../integration/crud-typeorm/projects';
 import { User } from '../../../integration/crud-typeorm/users';
 import { UserProfile } from '../../../integration/crud-typeorm/users-profiles';
@@ -23,7 +23,7 @@ import { UserProfilesService } from './__fixture__/UserProfile.service';
 jest.setTimeout(60000);
 
 describe('#crud-typeorm', () => {
-  const withCache = isPg ? postgresConfig : mySqlConfig;
+  const withCache = dbConfig;
 
   describe('#query params', () => {
     let app: INestApplication;

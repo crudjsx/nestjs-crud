@@ -8,7 +8,7 @@ import { RequestQueryBuilder } from '@crudjsx/crud-request';
 import * as request from 'supertest';
 import { Company } from '../../../integration/crud-typeorm/companies';
 import { Device } from '../../../integration/crud-typeorm/devices';
-import { isPg, postgresConfig, mySqlConfig } from '../../../database';
+import { dbConfig, isPg } from '../../../database';
 import { Project } from '../../../integration/crud-typeorm/projects';
 import { User } from '../../../integration/crud-typeorm/users';
 import { UserProfile } from '../../../integration/crud-typeorm/users-profiles';
@@ -24,15 +24,9 @@ describe('#crud-typeorm', () => {
     let server: any;
     let qb: RequestQueryBuilder;
     let service: CompaniesService;
-    const withCache = isPg ? postgresConfig : mySqlConfig;
+    const withCache = dbConfig;
 
-    @Crud({
-      model: { type: Company },
-      query: {
-        alwaysPaginate: true,
-        limit: 3,
-      },
-    })
+    @Crud({ model: { type: Company }, query: { alwaysPaginate: true, limit: 3 } })
     @Controller('companies0')
     class CompaniesController0 {
       constructor(public service: CompaniesService) {}
@@ -78,12 +72,9 @@ describe('#crud-typeorm', () => {
     let server: any;
     let qb: RequestQueryBuilder;
     let service: CompaniesService;
-    const withCache = isPg ? postgresConfig : mySqlConfig;
+    const withCache = dbConfig;
 
-    @Crud({
-      model: { type: Company },
-      query: { alwaysPaginate: true },
-    })
+    @Crud({ model: { type: Company }, query: { alwaysPaginate: true } })
     @Controller('companies')
     class CompaniesController {
       constructor(public service: CompaniesService) {}
@@ -147,14 +138,9 @@ describe('#crud-typeorm', () => {
     let server: any;
     let qb: RequestQueryBuilder;
     let service: CompaniesService;
-    const withCache = isPg ? postgresConfig : mySqlConfig;
+    const withCache = dbConfig;
 
-    @Crud({
-      model: { type: Company },
-      query: {
-        softDelete: true,
-      },
-    })
+    @Crud({ model: { type: Company }, query: { softDelete: true } })
     @Controller('companies')
     class CompaniesController {
       constructor(public service: CompaniesService) {}
@@ -163,28 +149,12 @@ describe('#crud-typeorm', () => {
     @Crud({
       model: { type: User },
       params: {
-        companyId: {
-          field: 'companyId',
-          type: 'number',
-        },
-        id: {
-          field: 'id',
-          type: 'number',
-          primary: true,
-        },
+        companyId: { field: 'companyId', type: 'number' },
+        id: { field: 'id', type: 'number', primary: true },
       },
-      routes: {
-        deleteOneBase: {
-          returnDeleted: true,
-        },
-      },
-      query: {
-        persist: ['isActive'],
-        cache: 10000,
-      },
-      validation: {
-        transform: true,
-      },
+      routes: { deleteOneBase: { returnDeleted: true } },
+      query: { persist: ['isActive'], cache: 10000 },
+      validation: { transform: true },
     })
     @Controller('companies/:companyId/users')
     class UsersController {
@@ -193,30 +163,14 @@ describe('#crud-typeorm', () => {
 
     @Crud({
       model: { type: User },
-      query: {
-        join: {
-          profile: {
-            eager: true,
-            required: true,
-          },
-        },
-      },
+      query: { join: { profile: { eager: true, required: true } } },
     })
     @Controller('/users2')
     class UsersController2 {
       constructor(public service: UsersService) {}
     }
 
-    @Crud({
-      model: { type: User },
-      query: {
-        join: {
-          profile: {
-            eager: true,
-          },
-        },
-      },
-    })
+    @Crud({ model: { type: User }, query: { join: { profile: { eager: true } } } })
     @Controller('/users3')
     class UsersController3 {
       constructor(public service: UsersService) {}
@@ -236,18 +190,8 @@ describe('#crud-typeorm', () => {
 
     @Crud({
       model: { type: Device },
-      params: {
-        deviceKey: {
-          field: 'deviceKey',
-          type: 'uuid',
-          primary: true,
-        },
-      },
-      routes: {
-        createOneBase: {
-          returnShallow: true,
-        },
-      },
+      params: { deviceKey: { field: 'deviceKey', type: 'uuid', primary: true } },
+      routes: { createOneBase: { returnShallow: true } },
     })
     @Controller('devices')
     class DevicesController {
@@ -300,20 +244,14 @@ describe('#crud-typeorm', () => {
 
     describe('#findOne', () => {
       it('should return one entity', async () => {
-        const data = (await service.findOne({
-          where: {
-            id: 1,
-          },
-        })) as Company;
+        const data = (await service.findOne({ where: { id: 1 } })) as Company;
         expect(data.id).toBe(1);
       });
     });
 
     describe('#findOneBy', () => {
       it('should return one entity', async () => {
-        const data = (await service.findOneBy({
-          id: 1,
-        })) as Company;
+        const data = (await service.findOneBy({ id: 1 })) as Company;
         expect(data.id).toBe(1);
       });
     });
@@ -351,12 +289,8 @@ describe('#crud-typeorm', () => {
         expect(res.status).toBe(200);
         expect(res.body).toEqual(
           expect.arrayContaining([
-            expect.objectContaining({
-              deletedAt: expect.any(String),
-            }),
-            expect.objectContaining({
-              deletedAt: null,
-            }),
+            expect.objectContaining({ deletedAt: expect.any(String) }),
+            expect.objectContaining({ deletedAt: null }),
           ]),
         );
       });
@@ -384,6 +318,7 @@ describe('#crud-typeorm', () => {
       it('should return an entities with offset', async () => {
         const queryObj = qb.setOffset(3);
         if (!isPg) {
+          // MYSQL OR SQLITE
           queryObj.setLimit(10);
         }
         const query = queryObj.query();
@@ -391,15 +326,9 @@ describe('#crud-typeorm', () => {
         expect(res.status).toBe(200);
         expect(res.body).not.toEqual(
           expect.arrayContaining([
-            expect.objectContaining({
-              id: 1,
-            }),
-            expect.objectContaining({
-              id: 2,
-            }),
-            expect.objectContaining({
-              id: 3,
-            }),
+            expect.objectContaining({ id: 1 }),
+            expect.objectContaining({ id: 2 }),
+            expect.objectContaining({ id: 3 }),
           ]),
         );
       });
@@ -466,10 +395,7 @@ describe('#crud-typeorm', () => {
       });
 
       it('should return saved entity', async () => {
-        const dto = {
-          name: 'test0',
-          domain: faker.internet.domainName(),
-        };
+        const dto = { name: 'test0', domain: faker.internet.domainName() };
         const res = await request(server).post('/companies').send(dto);
         expect(res.status).toBe(201);
         expect(res.body.id).toBeTruthy();
@@ -479,13 +405,8 @@ describe('#crud-typeorm', () => {
         const dto: any = {
           email: 'test@test.com',
           isActive: true,
-          name: {
-            first: 'test',
-            last: 'last',
-          },
-          profile: {
-            name: 'testName',
-          },
+          name: { first: 'test', last: 'last' },
+          profile: { name: 'testName' },
         };
         const res = await request(server).post('/companies/1/users').send(dto);
         expect(res.status).toBe(201);
@@ -512,14 +433,8 @@ describe('#crud-typeorm', () => {
       it('should return created entities', async () => {
         const dto = {
           bulk: [
-            {
-              name: 'test1',
-              domain: faker.internet.domainName(),
-            },
-            {
-              name: 'test2',
-              domain: faker.internet.domainName(),
-            },
+            { name: 'test1', domain: faker.internet.domainName() },
+            { name: 'test2', domain: faker.internet.domainName() },
           ],
         };
         const res = await request(server).post('/companies/bulk').send(dto);
@@ -550,10 +465,7 @@ describe('#crud-typeorm', () => {
             companyId: 1,
             isActive: faker.datatype.boolean(),
             email: faker.internet.email(),
-            name: {
-              first: faker.person.firstName(),
-              last: faker.person.lastName(),
-            },
+            name: { first: faker.person.firstName(), last: faker.person.lastName() },
           })
           .expect(201);
 
@@ -577,10 +489,7 @@ describe('#crud-typeorm', () => {
             companyId: 1,
             isActive: faker.datatype.boolean(),
             email: faker.internet.email(),
-            name: {
-              first: currentName,
-              last: faker.person.lastName(),
-            },
+            name: { first: currentName, last: faker.person.lastName() },
           })
           .expect(201);
 
@@ -611,10 +520,7 @@ describe('#crud-typeorm', () => {
             companyId: 1,
             isActive: faker.datatype.boolean(),
             email: faker.internet.email(),
-            name: {
-              first: faker.person.firstName(),
-              last: currentName,
-            },
+            name: { first: faker.person.firstName(), last: currentName },
           })
           .expect(201);
 
@@ -725,10 +631,7 @@ describe('#crud-typeorm', () => {
             companyId: faker.number.int({ min: 1, max: 50 }),
             isActive: faker.datatype.boolean(),
             email: faker.internet.email(),
-            name: {
-              first: faker.person.firstName(),
-              last: faker.person.lastName(),
-            },
+            name: { first: faker.person.firstName(), last: faker.person.lastName() },
           })
           .expect(201);
 

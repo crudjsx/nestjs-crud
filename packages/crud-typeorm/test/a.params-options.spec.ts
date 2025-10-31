@@ -6,7 +6,7 @@ import * as request from 'supertest';
 import { faker } from '@faker-js/faker';
 
 import { Company } from '../../../integration/crud-typeorm/companies';
-import { isPg, postgresConfig, mySqlConfig } from '../../../database';
+import { dbConfig } from '../../../database';
 import { Project } from '../../../integration/crud-typeorm/projects';
 import { User } from '../../../integration/crud-typeorm/users';
 import { UserProfile } from '../../../integration/crud-typeorm/users-profiles';
@@ -17,7 +17,7 @@ import { UsersService } from './__fixture__/users.service';
 jest.setTimeout(60000);
 
 describe('#crud-typeorm', () => {
-  const withCache = isPg ? postgresConfig : mySqlConfig;
+  const withCache = dbConfig;
 
   describe('#params options', () => {
     let app: INestApplication;

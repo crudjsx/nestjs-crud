@@ -11,7 +11,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 
 import { Crud, CrudAuth } from '@crudjsx/crud';
 import * as request from 'supertest';
-import { isPg, postgresConfig, mySqlConfig } from '../../../database';
+import { dbConfig } from '../../../database';
 import { User } from '../../../integration/crud-typeorm/users';
 import { UserProfile } from '../../../integration/crud-typeorm/users-profiles';
 import { Project } from '../../../integration/crud-typeorm/projects';
@@ -23,7 +23,7 @@ import { faker } from '@faker-js/faker';
 jest.setTimeout(60000);
 
 describe('#crud-typeorm', () => {
-  const withCache = isPg ? postgresConfig : mySqlConfig;
+  const withCache = dbConfig;
 
   describe('#CrudAuth', () => {
     const USER_REQUEST_KEY = 'user';
